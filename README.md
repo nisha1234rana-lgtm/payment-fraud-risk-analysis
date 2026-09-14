@@ -1,569 +1,189 @@
-Payment Fraud Detection & Transaction Risk Analysis
+# Payment Fraud Risk Analysis
 
-From 7.48M transactions to an explainable fraud investigation system
+### From 7.48M transactions to an explainable fraud investigation system
 
-I built this project to understand fraud detection as a complete analytics problem, not just a classification exercise. The goal was to take a large transaction dataset, reconstruct customer behavior over time, detect suspicious activity without leaking future information, and turn model scores into something a fraud analyst could actually investigate.
+I built this project to treat fraud detection as a full analytics workflow, not just a model. The project starts with raw payment data, builds time-aware behavioral features, trains and validates a fraud model, translates predictions into business decisions, and delivers the output through a Streamlit investigation app.
 
-The result is an end-to-end workflow using Python, SQL, DuckDB, LightGBM, SHAP, Plotly, and Streamlit.
+It uses **Python, SQL, DuckDB, LightGBM, SHAP, and Streamlit**.
 
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-336791?logo=postgresql&logoColor=white)
+![DuckDB](https://img.shields.io/badge/DuckDB-FFF000?logo=duckdb&logoColor=black)
+![LightGBM](https://img.shields.io/badge/LightGBM-2E8B57)
+![SHAP](https://img.shields.io/badge/SHAP-Explainability-6F42C1)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?logo=streamlit&logoColor=white)
 
+---
 
-Demo: The Streamlit investigation app is included in this repository and can be launched locally with streamlit run app/app.py.
+## Project at a Glance
 
-Tech Stack
+| Metric | Result |
+|---|---:|
+| Transactions processed | **7,483,766** |
+| Customers | **4,869** |
+| Cards | **5,000** |
+| Merchants | **105** |
+| Fraud rate | **19.97%** |
+| Final test transactions | **1,206,491** |
+| ROC-AUC | **0.9969** |
+| PR-AUC | **0.9907** |
+| Precision | **96.99%** |
+| Recall | **93.36%** |
+| F1 Score | **95.14%** |
 
+---
 
+## App Preview
 
+<p align="center">
+  <img src="assets/fraud_app_overview.png" alt="Fraud Investigation App Overview" width="92%">
+</p>
 
+The app allows an analyst to review high-risk transactions, inspect customer behavior, understand model risk drivers, and investigate card-device-customer relationships.
 
+---
 
+## Workflow
 
-
-
-
-
-Project at a Glance
-
-Metric
-
-Result
-
-Transactions processed
-
-7,483,766
-
-Unique source transaction IDs
-
-7,477,306
-
-Customers
-
-4,869
-
-Cards
-
-5,000
-
-Merchants
-
-105
-
-Fraud rate
-
-19.97%
-
-Final test transactions
-
-1,206,491
-
-ROC-AUC
-
-0.9969
-
-PR-AUC
-
-0.9907
-
-Precision
-
-96.99%
-
-Recall
-
-93.36%
-
-F1 Score
-
-95.14%
-
-Labeled fraud transaction amount captured at 0.75 threshold*
-
-96.53%
-
-Monitoring days evaluated
-
-5
-
-Performance drift alerts
-
-0
-
-*The dataset contains multiple currencies. This percentage uses the source amount field as provided and is not a currency-normalized monetary estimate.
-
-End-to-End Architecture
-
+```mermaid
 flowchart LR
-    A["Raw Transactions<br/>7.48M rows"] --> B["DuckDB<br/>Ingestion"]
-    B --> C["Cleaning +<br/>Data Quality"]
-    C --> D["Transaction ID<br/>Integrity Repair"]
-    D --> E["Behavioral +<br/>Velocity Features"]
-    E --> F["Relationship<br/>Features"]
-    F --> G["Chronological<br/>Train / Validation / Test"]
-    G --> H["Logistic Regression<br/>Baseline"]
-    G --> I["LightGBM<br/>Risk Model"]
-    I --> J["Threshold +<br/>Business Logic"]
-    J --> K["SHAP<br/>Explainability"]
-    K --> L["Streamlit<br/>Investigation App"]
-    I --> M["Drift + Performance<br/>Monitoring"]
+    A[Raw Transactions] --> B[DuckDB Ingestion]
+    B --> C[Cleaning and Validation]
+    C --> D[Behavioral Features]
+    D --> E[Modeling]
+    E --> F[Business Decision Layer]
+    F --> G[Explainability]
+    G --> H[Streamlit Investigation App]
+    E --> I[Monitoring]
+```
 
-1. Data Engineering
+---
 
-The source covers transactions from September 30 to October 30, 2024. With more than 7.48 million rows, I used DuckDB and SQL for ingestion, profiling, transformations, and large window calculations instead of repeatedly loading the full dataset into pandas.
+## What I Built
 
-One of the first issues I found was 6,453 reused transaction IDs. They looked like duplicates at first, but deeper checks showed that the same IDs could have different customers, cards, timestamps, amounts, devices, IP addresses, and even fraud labels.
+### 1. Data Engineering
+I processed **7.48M transactions** using DuckDB and SQL. During validation, I found **6,453 reused transaction IDs**. These were not simple duplicates, so I created a new unique analytical `transaction_key` instead of dropping valid rows.
 
-Rather than deleting valid observations, I preserved the original source ID and generated a new unique analytical transaction_key.
+### 2. Behavioral Feature Engineering
+I built historical features that only use information available **before each transaction**, including prior transaction count, time since previous transaction, 1-hour and 24-hour velocity, customer average spend, and amount anomaly signals.
 
-Result: all 7,483,766 transactions were retained without treating distinct transactions as duplicates.
+### 3. Modeling
+I trained a Logistic Regression baseline and compared it with LightGBM using a **chronological split**.
 
-2. Behavioral & Relationship Features
+| Model | ROC-AUC | PR-AUC | Best F1 |
+|---|---:|---:|---:|
+| Logistic Regression | 0.9705 | 0.9233 | 0.8365 |
+| **LightGBM** | **0.9968** | **0.9906** | **0.9508** |
 
-Fraud is difficult to understand from a single transaction. I rebuilt the customer context that existed before each transaction, including:
+### 4. Final Test Performance
+The final production candidate was evaluated on an untouched future period.
 
-prior transaction count
+| Metric | Result |
+|---|---:|
+| Precision | **96.99%** |
+| Recall | **93.36%** |
+| F1 Score | **95.14%** |
+| True Positives | **225,252** |
+| False Positives | **6,994** |
+| False Negatives | **16,019** |
+| True Negatives | **958,226** |
 
-minutes since previous transaction
+### 5. Business Decisioning
+I converted model output into operational fraud decisions using threshold analysis, risk bands, and review tradeoffs.
 
-historical average spend
+| Approach | Precision | Recall |
+|---|---:|---:|
+| Behavioral Rules | 58.07% | 41.44% |
+| **ML Only** | **96.99%** | **93.36%** |
+| ML + Behavioral Rules | 75.60% | 95.48% |
 
-amount vs customer average
+---
 
-1-hour transaction velocity
+## Explainability
 
-24-hour transaction velocity
+<p align="center">
+  <img src="assets/fraud_app_risk_drivers.png" alt="Risk Drivers" width="92%">
+</p>
 
-prior-hour and prior-day spending
+I used **SHAP** to explain why a transaction was flagged. The strongest global drivers included **distance from home, card presence, transaction amount, currency, merchant, transaction hour, and payment channel**.
 
-new merchant activity
+---
 
-overnight behavior
+## Customer and Relationship Investigation
 
-I also built historical relationships across customers, cards, devices, and merchants.
+<p align="center">
+  <img src="assets/fraud_app_customer_intelligence.png" alt="Customer Intelligence" width="92%">
+</p>
 
-The important part was keeping the model time-safe. Historical averages and velocity calculations use only earlier transactions, so future activity does not leak backward into the prediction.
+<p align="center">
+  <img src="assets/fraud_app_relationship_analysis.png" alt="Relationship Analysis" width="92%">
+</p>
 
-Some device-network signals were almost perfectly associated with fraud. Because the dataset is synthetic, I treated those as potential data-generation shortcuts and kept the near-deterministic signals for investigation and benchmarking, not the main ML model.
+The app also supports customer behavior review and relationship analysis across cards, devices, and customers, making the project more useful than a standalone prediction file.
 
-3. Modeling & Validation
+---
 
-I trained Logistic Regression first as an interpretable baseline, then compared it with LightGBM.
+## What Made This Project Difficult
 
-Instead of randomly mixing transactions from across the month, I used a chronological split:
+- **Large-scale data processing:** 7.48M rows required SQL and DuckDB instead of inefficient notebook-only workflows.
+- **Messy identifiers:** repeated transaction IDs looked like duplicates but represented different records.
+- **Leakage risk:** behavioral features had to be built carefully so they used only prior information.
+- **Synthetic shortcut signals:** some network patterns were almost perfectly associated with fraud, so I kept them out of the main model to avoid inflated performance.
+- **Business tradeoffs:** the best fraud catch rate was not automatically the best operational decision because higher recall also increased false alerts.
 
-Dataset
+---
 
-Period
+## Real Results vs Assumptions
 
-Train
+This project uses a **synthetic transaction dataset**. The reported model metrics and fraud rates are real outputs from the project pipeline, but they should be treated as portfolio results, not real bank performance.
 
-Sep 30 – Oct 20
+Some business-cost scenarios were tested with assumptions such as manual review cost and false-positive friction cost. These were used only for decision analysis and are **not real financial claims**.
 
-Validation
+---
 
-Oct 21 – Oct 25
+## Repository Structure
 
-Final Test
-
-Oct 26 – Oct 30
-
-This tests a more realistic question: can a model trained on past activity detect fraud in future transactions?
-
-Model Comparison
-
-Model
-
-ROC-AUC
-
-PR-AUC
-
-Best F1
-
-Logistic Regression
-
-0.9705
-
-0.9233
-
-0.8365
-
-LightGBM
-
-0.9968
-
-0.9906
-
-0.9508
-
-LightGBM captured the nonlinear transaction patterns better and became the final model.
-
-The validation set was also used to select a 0.75 decision threshold, which was locked before the final five-day test period was evaluated.
-
-Final Untouched Test
-
-Metric
-
-Result
-
-Transactions
-
-1,206,491
-
-ROC-AUC
-
-0.9969
-
-PR-AUC
-
-0.9907
-
-Precision
-
-96.99%
-
-Recall
-
-93.36%
-
-F1
-
-95.14%
-
-True Positives
-
-225,252
-
-False Positives
-
-6,994
-
-False Negatives
-
-16,019
-
-True Negatives
-
-958,226
-
-Validation and final-test performance stayed very close, which gave me more confidence that the model generalized across the later time period.
-
-4. Explainable Risk Decisions
-
-A fraud score is much more useful when an investigator can understand what caused it.
-
-I used SHAP to calculate transaction-level feature contributions and surfaced them directly inside the investigation app.
-
-
-
-The strongest global drivers included:
-
-distance from home · card presence · transaction amount · currency · merchant · transaction hour · payment channel · card type · amount vs customer history · country
-
-This lets the system answer both:
-
-How risky is this transaction?
-
-and
-
-Why did the model consider it risky?
-
-5. Business Decision Layer
-
-A probability alone does not tell a fraud team what action to take.
-
-I evaluated thresholds using:
-
-fraud transactions caught
-
-fraud missed
-
-false alerts
-
-review volume
-
-transaction recall
-
-labeled fraud transaction amount captured
-
-At the selected 0.75 threshold, the model achieved 96.99% precision, 93.36% recall, and captured 96.53% of the labeled fraud transaction amount in the test set using the source amount field.
-
-Rules vs Machine Learning
-
-Approach
-
-Precision
-
-Recall
-
-Fraud Amount Captured*
-
-Behavioral Rules
-
-58.07%
-
-41.44%
-
-73.05%
-
-ML Only
-
-96.99%
-
-93.36%
-
-96.53%
-
-ML + Behavioral Rules
-
-75.60%
-
-95.48%
-
-98.91%
-
-*Based on the source amount field without currency normalization.
-
-The hybrid approach caught more fraud, but it also produced substantially more false alerts. That tradeoff matters when investigation teams have limited review capacity.
-
-6. Fraud Investigation App
-
-I built a Streamlit workspace so the project did not end with a prediction CSV.
-
-An analyst can:
-
-open the highest-risk transaction queue
-
-inspect false positives
-
-inspect false negatives
-
-search individual transactions
-
-view a 0–100 risk score
-
-review the recommended action
-
-understand model risk drivers
-
-inspect customer behavior
-
-investigate linked cards, devices, and customers
-
-Customer Intelligence
-
-
-
-This view gives the investigator context around historical spending, transaction velocity, previous transactions, and recent customer behavior.
-
-Relationship Analysis
-
-
-
-The relationship layer helps surface shared devices, cards, and customers that may deserve additional investigation.
-
-Full-period relationship tables are used for investigation only. Future relationship information is not used as a predictive feature by the main model.
-
-7. Monitoring
-
-The final stage asks what happens after the model is deployed.
-
-I built monitoring for:
-
-daily precision and recall
-
-alert rate
-
-fraud rate
-
-prediction-score drift
-
-numeric feature drift
-
-categorical feature drift
-
-Across the five-day monitoring period:
-
-Monitoring Result
-
-Outcome
-
-Precision
-
-96.95% – 97.04%
-
-Recall
-
-93.26% – 93.52%
-
-Score drift
-
-None
-
-Categorical drift
-
-None
-
-Performance deterioration
-
-None
-
-Five high-PSI alerts were generated for customer_prior_transactions. That feature naturally increases as customer histories accumulate over time.
-
-Because model scores, precision, and recall stayed stable, I treated this as structural time drift, not automatic evidence that retraining was required.
-
-What Made This Project Difficult
-
-Challenge
-
-How I handled it
-
-7.48M transactions
-
-Moved large-scale profiling, filtering, aggregations, and historical window calculations into DuckDB and SQL.
-
-Reused transaction IDs
-
-Investigated conflicts field by field and created a unique analytical transaction key instead of deleting valid rows.
-
-Data leakage risk
-
-Built historical averages, velocity, and behavioral signals using ordered windows so each row only uses prior information.
-
-Synthetic shortcuts
-
-Excluded near-deterministic device-network signals from the main model rather than using them to inflate performance.
-
-Business tradeoffs
-
-Compared precision, recall, false alerts, review volume, rule systems, and threshold behavior instead of optimizing ROC-AUC alone.
-
-Drift interpretation
-
-Separated feature movement from true model deterioration by checking score distributions and daily predictive performance.
-
-Real Results vs Scenario Assumptions
-
-The transaction counts, model metrics, fraud rates, model outputs, and monitoring results above are calculated from the project dataset.
-
-The underlying dataset is synthetic, so the results should be interpreted as portfolio experimentation rather than real banking performance.
-
-For business-cost experiments, I also tested assumptions such as:
-
-Scenario Variable
-
-Assumption
-
-Manual review cost
-
-$5
-
-False-positive friction cost
-
-$15
-
-Fraud recovery rate
-
-90%
-
-These are scenario assumptions only. They are not actual bank costs, recovery rates, realized savings, or claims about real-world financial impact.
-
-Reproducibility & Pipeline
-
-The project is organized as a sequence of reusable scripts rather than one large notebook.
-
-Ingestion
-   ↓
-Cleaning
-   ↓
-Data Quality Investigation
-   ↓
-Behavioral Features
-   ↓
-Relationship Features
-   ↓
-Model Dataset
-   ↓
-Logistic Regression Baseline
-   ↓
-LightGBM
-   ↓
-Final Test
-   ↓
-Business Decisioning
-   ↓
-Explainability
-   ↓
-Monitoring
-   ↓
-Streamlit Investigation App
-
-I also used deterministic development samples, chronological validation, integrity checks, and saved intermediate reports so the workflow can be reviewed and reproduced.
-
-Repository Structure
-
+```text
 Payment_Fraud_Analysis/
-│
 ├── app/
-│   └── app.py
-│
 ├── assets/
-│   ├── fraud_app_overview.png
-│   ├── fraud_app_risk_drivers.png
-│   ├── fraud_app_customer_intelligence.png
-│   └── fraud_app_relationship_analysis.png
-│
 ├── data/
-│   ├── raw/
-│   └── processed/
-│
-├── models/
-│
+├── docs/
 ├── reports/
-│   ├── analysis/
-│   ├── business_results/
-│   ├── data_quality/
-│   ├── explainability/
-│   ├── model_results/
-│   └── monitoring/
-│
 ├── src/
-│   ├── ingestion/
-│   ├── cleaning/
-│   ├── features/
-│   ├── models/
-│   ├── risk/
-│   └── monitoring/
-│
 ├── requirements.txt
-├── .gitignore
 └── README.md
+```
 
-Large raw datasets, DuckDB databases, and model binaries are excluded from Git where appropriate.
+---
 
-Run Locally
+## Run Locally
 
-Create and activate the environment:
-
+```bash
 python -m venv .venv
+```
 
+```powershell
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
-
-After generating the required pipeline and model artifacts:
-
 streamlit run app/app.py
+```
 
-What I Learned
+---
 
-This project strengthened both my technical and business approach to analytics.
+## What I Learned
 
-The most useful lessons came from decisions around data integrity, leakage, suspiciously strong predictors, threshold tradeoffs, explainability, and model drift rather than simply training the highest-scoring model.
+This project strengthened how I think about analytics end to end: not just model building, but also data quality, leakage prevention, explainability, threshold tradeoffs, and how analytics should support real decisions.
 
-It reinforced the way I like to work: build the analytics carefully, question the result, and then turn it into something useful for the person making the decision.
+---
 
-About Me
+## About Me
 
-Hi, I'm Nisha Rajkumar, an M.S. Business Analytics candidate at the University of Rochester's Simon Business School, after completing my B.Tech in Biotechnology at SRM Institute of Science and Technology.
+Hi, I'm **Nisha Rajkumar**, an **M.S. Business Analytics candidate at the University of Rochester Simon Business School**.
 
-I enjoy working with messy data, SQL/Python workflows, business analysis, visualization, and machine learning when it genuinely improves the decision being made.
+I enjoy working on projects involving messy data, SQL and Python workflows, business analysis, visualization, and machine learning when it adds real decision value.
 
-I'm interested in opportunities across Business Analytics, Data Analytics, BI, Risk Analytics, Operations Analytics, Product Analytics, and Strategy Analytics.
+I’m interested in roles across **Business Analytics, Data Analytics, BI, Risk Analytics, Operations Analytics, Product Analytics, and Strategy Analytics**.
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/nisha-rajkumar)
+[![GitHub](https://img.shields.io/badge/GitHub-View%20My%20Work-181717?logo=github&logoColor=white)](https://github.com/nisha1234rana-lgtm)
