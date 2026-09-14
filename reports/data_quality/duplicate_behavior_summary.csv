@@ -1,0 +1,2 @@
+duplicate_ids,different_timestamp_ids,different_customer_ids,different_card_ids,different_amount_ids,different_merchant_ids,different_fraud_label_ids,strongly_separate_transaction_like_ids
+6453,6441.0,6452.0,6452.0,6453.0,6387.0,2012.0,6440.0

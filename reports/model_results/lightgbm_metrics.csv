@@ -1,0 +1,2 @@
+model,training_rows,validation_rows,best_iteration,roc_auc,pr_auc,precision_0_5,recall_0_5,f1_0_5,true_positives,false_positives,false_negatives,true_negatives
+lightgbm_main_model,506563,241283,747,0.9967919553268358,0.990559662523981,0.9156109920093549,0.9676024138570222,0.9408890179545978,46980,4330,1573,188400

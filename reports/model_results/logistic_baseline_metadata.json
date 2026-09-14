@@ -1,0 +1,39 @@
+{
+  "numeric_features": [
+    "amount",
+    "log_amount",
+    "distance_from_home",
+    "transaction_hour",
+    "weekend_transaction",
+    "card_present",
+    "customer_prior_transactions",
+    "minutes_since_previous_transaction",
+    "previous_customer_amount",
+    "customer_avg_amount_prior",
+    "customer_std_amount_prior",
+    "amount_vs_customer_average",
+    "amount_zscore_vs_customer_history",
+    "calculated_txn_count_1h",
+    "calculated_amount_1h",
+    "calculated_txn_count_24h",
+    "calculated_amount_24h",
+    "new_merchant_for_customer_flag",
+    "overnight_transaction_flag"
+  ],
+  "categorical_features": [
+    "merchant_category",
+    "merchant_type",
+    "merchant",
+    "currency",
+    "country",
+    "city_size",
+    "card_type",
+    "device",
+    "channel"
+  ],
+  "training_rows": 506563,
+  "validation_rows": 241283,
+  "roc_auc": 0.9705217238851048,
+  "pr_auc": 0.9233192033362565,
+  "feature_policy": "Main-model features only. Near-deterministic synthetic device/network signals excluded."
+}

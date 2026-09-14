@@ -1,0 +1,2 @@
+model,training_rows,validation_rows,roc_auc,pr_auc,precision_0_5,recall_0_5,f1_0_5,true_positives,false_positives,false_negatives,true_negatives
+logistic_regression_baseline,506563,241283,0.9705217238851048,0.9233192033362565,0.7602633945997318,0.9226412374106646,0.833618668353865,44797,14126,3756,178604

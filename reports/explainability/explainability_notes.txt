@@ -1,0 +1,20 @@
+SHAP Explainability Notes
+
+The LightGBM model's SHAP contributions are reported in raw model
+score/log-odds space.
+
+Positive contributions push a transaction toward a higher fraud score.
+Negative contributions push a transaction toward a lower fraud score.
+
+The model intentionally excludes near-deterministic synthetic network
+rules from its main feature set.
+
+Network relationships are retained separately for fraud investigation
+and rule-system benchmarking.
+
+Global feature importance is calculated using mean absolute SHAP
+contribution across a deterministic sample of the final test period.
+
+Transaction-level explanations show the five strongest model drivers
+for selected true positives, false positives, false negatives and
+low-risk legitimate transactions.

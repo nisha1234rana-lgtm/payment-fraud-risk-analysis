@@ -1,0 +1,2 @@
+rows,unique_transaction_ids,unique_customers,unique_cards,unique_merchants,unique_device_fingerprints,unique_ip_addresses,min_timestamp,max_timestamp,fraud_transactions,fraud_rate_pct,missing_amount,negative_amount,missing_timestamp,missing_customer,missing_card,missing_merchant,missing_device_fingerprint,missing_ip_address,duplicate_transaction_ids
+7483766,7477306,4869,5000,105,785462,7477187,2024-09-30 00:00:01.034820,2024-10-30 23:59:59.101885,1494719.0,19.9728,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,6453

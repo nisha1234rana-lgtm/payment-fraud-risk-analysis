@@ -1,0 +1,6 @@
+source_key,column_name,sample_type
+num_transactions,velocity_num_transactions,int
+total_amount,velocity_total_amount,float
+unique_merchants,velocity_unique_merchants,int
+unique_countries,velocity_unique_countries,int
+max_single_amount,velocity_max_single_amount,float

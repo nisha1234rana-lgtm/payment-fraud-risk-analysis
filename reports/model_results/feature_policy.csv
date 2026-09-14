@@ -1,0 +1,45 @@
+feature,feature_group,policy,reason
+amount,transaction,main_model,Core transaction value
+log_amount,transaction,main_model,Reduces extreme amount skew
+distance_from_home,behavior,main_model,Transaction context
+transaction_hour,time,main_model,Time-of-day behavior
+weekend_transaction,time,main_model,Weekend behavior
+card_present,transaction,main_model,Card-present context
+merchant_category,categorical,main_model,Merchant category
+merchant_type,categorical,main_model,Merchant type
+merchant,categorical,main_model,Merchant-level pattern
+currency,categorical,main_model,Currency context
+country,categorical,main_model,Country context
+city_size,categorical,main_model,Location context
+card_type,categorical,main_model,Card type
+device,categorical,main_model,General device category
+channel,categorical,main_model,Payment channel
+customer_prior_transactions,behavior,main_model,Prior customer activity
+minutes_since_previous_transaction,velocity,main_model,Transaction timing
+previous_customer_amount,behavior,main_model,Previous spend
+customer_avg_amount_prior,behavior,main_model,Leakage-safe historical average
+customer_std_amount_prior,behavior,main_model,Historical spend variation
+amount_vs_customer_average,behavior,main_model,Deviation from historical average
+amount_zscore_vs_customer_history,behavior,main_model,Historical amount anomaly
+calculated_txn_count_1h,velocity,main_model,Customer transaction velocity
+calculated_amount_1h,velocity,main_model,Customer spend velocity
+calculated_txn_count_24h,velocity,main_model,24-hour customer activity
+calculated_amount_24h,velocity,main_model,24-hour customer spend
+new_merchant_for_customer_flag,behavior,main_model,Merchant novelty
+overnight_transaction_flag,time,main_model,Overnight activity
+new_device_for_customer_flag,network,rule_or_benchmark,99%+ fraud relationship in synthetic data
+device_changed_from_previous_flag,network,rule_or_benchmark,Very strong synthetic device signal
+new_customer_on_existing_device_flag,network,rule_or_benchmark,100% fraud in observed dataset
+new_card_on_existing_device_flag,network,rule_or_benchmark,Nearly 100% fraud in observed dataset
+device_shared_by_multiple_customers_flag,network,rule_or_benchmark,100% fraud in observed dataset
+device_shared_by_multiple_cards_flag,network,rule_or_benchmark,Strong synthetic fraud relationship
+card_used_across_multiple_devices_flag,network,rule_or_benchmark,Network investigation feature
+prior_customers_on_device,network,rule_or_benchmark,Historical network connectivity
+prior_cards_on_device,network,rule_or_benchmark,Historical network connectivity
+prior_devices_on_card,network,rule_or_benchmark,Historical network connectivity
+prior_merchants_on_device,network,rule_or_benchmark,Historical network connectivity
+customer_id,identifier,excluded,Would encourage customer memorization
+card_number,identifier,excluded,Raw identifier
+device_fingerprint,identifier,excluded,Raw high-cardinality identifier
+ip_address,identifier,excluded,Nearly unique per transaction
+velocity_last_hour,source_feature,excluded,Meaning could not be validated against calculated velocity

@@ -1,0 +1,2 @@
+transactions,unique_transaction_keys,max_prior_customers_on_device,max_prior_cards_on_device,max_prior_devices_on_card,max_prior_merchants_on_device,new_customer_existing_device_pct,new_card_existing_device_pct,multi_customer_device_pct,multi_card_device_pct
+7483766,7483766,9.0,9.0,403.0,105.0,9.6077,9.6091,3.7238,5.3954

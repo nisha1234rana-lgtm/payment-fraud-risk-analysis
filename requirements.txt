@@ -1,0 +1,17 @@
+duckdb>=1.4
+pandas>=2.2
+numpy>=2.0
+pyarrow>=18
+scikit-learn>=1.6
+imbalanced-learn>=0.13
+lightgbm>=4.5
+xgboost>=3.0
+shap>=0.47
+networkx>=3.4
+plotly>=6.0
+matplotlib>=3.10
+streamlit>=1.44
+joblib>=1.4
+jupyter>=1.1
+ipykernel>=6.29
+kaggle>=1.7

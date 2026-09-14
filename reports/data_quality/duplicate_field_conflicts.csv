@@ -1,0 +1,2 @@
+duplicate_ids,customer_conflicts,card_conflicts,timestamp_conflicts,merchant_conflicts,amount_conflicts,currency_conflicts,country_conflicts,city_conflicts,card_type_conflicts,device_conflicts,channel_conflicts,device_fingerprint_conflicts,ip_conflicts,high_risk_conflicts,fraud_label_conflicts
+6453,6452.0,6452.0,6441.0,6387.0,6453.0,5833.0,5898.0,888.0,5192.0,5532.0,3446.0,6453.0,6453.0,2319.0,2012.0

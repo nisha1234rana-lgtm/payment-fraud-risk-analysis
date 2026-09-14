@@ -1,0 +1,2 @@
+monitoring_days,reference_period,monitoring_period,decision_threshold,reference_precision,reference_recall,high_numeric_drift_events,high_categorical_drift_events,high_score_drift_events,total_monitoring_alerts
+5,2024-10-21 to 2024-10-25,2024-10-26 to 2024-10-30,0.75,0.968592427997607,0.9337013160875745,5,0,0,5

@@ -1,0 +1,29 @@
+feature,friendly_name,mean_absolute_shap
+distance_from_home,Distance from home,1.5376029171647474
+card_present,Card present,1.2603381359056267
+amount,Transaction amount,1.205325026009294
+currency,Currency,0.6978726777444211
+merchant,Merchant,0.6420393009887285
+transaction_hour,Transaction hour,0.35458967607761227
+channel,Payment channel,0.34185725425445374
+card_type,Card type,0.33942638258343893
+log_amount,Transaction amount scale,0.3332099859386289
+merchant_type,Merchant type,0.25645453247416206
+amount_vs_customer_average,Amount vs customer average,0.23190638528986401
+country,Country,0.2012329558466671
+amount_zscore_vs_customer_history,Amount anomaly score,0.07675267971055094
+overnight_transaction_flag,Overnight transaction,0.06919983390095556
+previous_customer_amount,Previous transaction amount,0.056592047218944924
+customer_prior_transactions,Prior customer transactions,0.04680555447038107
+device,Device type,0.04593031621010578
+merchant_category,Merchant category,0.04362595103391941
+customer_avg_amount_prior,Historical average amount,0.03754027698899404
+customer_std_amount_prior,Historical amount variation,0.02848908548521581
+calculated_txn_count_24h,Transactions in prior 24 hours,0.020095475244108544
+calculated_amount_24h,Spend in prior 24 hours,0.018045872374780836
+minutes_since_previous_transaction,Time since previous transaction,0.017480727512634943
+calculated_amount_1h,Spend in prior hour,0.010621003842976031
+calculated_txn_count_1h,Transactions in prior hour,0.008839909633816485
+weekend_transaction,Weekend transaction,0.0013171501711637737
+new_merchant_for_customer_flag,New merchant for customer,0.0011540699487287212
+city_size,City size,0.00045994963867385965

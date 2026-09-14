@@ -1,0 +1,13 @@
+feature,feature_value,transactions,fraud_transactions,fraud_rate_pct
+amount_under_10,0,7357789,1368742.0,18.6026
+amount_under_10,1,125977,125977.0,100.0
+amount_under_25,0,7284359,1297005.0,17.8053
+amount_under_25,1,199407,197714.0,99.151
+device_changed,0,2978821,1907.0,0.064
+device_changed,1,4504945,1492812.0,33.1372
+high_risk_merchant,false,5611803,1120352.0,19.9642
+high_risk_merchant,true,1871963,374367.0,19.9986
+new_device,0,5979289,211.0,0.0035
+new_device,1,1504477,1494508.0,99.3374
+new_merchant,0,6972619,1384743.0,19.8597
+new_merchant,1,511147,109976.0,21.5155

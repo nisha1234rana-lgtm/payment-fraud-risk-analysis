@@ -1,0 +1,2 @@
+transactions,unique_transaction_keys,negative_time_gaps,avg_prior_transactions_1h,max_prior_transactions_1h,avg_prior_transactions_24h,max_prior_transactions_24h,new_device_pct,new_merchant_pct
+7483766,7483766,0.0,2.29,20,51.8,164,20.1,6.83

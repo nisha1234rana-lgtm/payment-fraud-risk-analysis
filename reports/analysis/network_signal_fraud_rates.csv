@@ -1,0 +1,11 @@
+signal,signal_value,transactions,fraud_transactions,fraud_rate_pct
+card_multiple_devices,0,11549,5323.0,46.0906
+card_multiple_devices,1,7472217,1489396.0,19.9325
+device_multiple_cards,0,7079984,1216035.0,17.1757
+device_multiple_cards,1,403782,278684.0,69.0184
+device_multiple_customers,0,7205083,1216036.0,16.8775
+device_multiple_customers,1,278683,278683.0,100.0
+new_card_existing_device,0,6764641,775695.0,11.4669
+new_card_existing_device,1,719125,719024.0,99.986
+new_customer_existing_device,0,6764751,775704.0,11.4669
+new_customer_existing_device,1,719015,719015.0,100.0

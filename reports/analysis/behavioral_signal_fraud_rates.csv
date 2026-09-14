@@ -1,0 +1,9 @@
+signal,signal_value,transactions,fraud_transactions,fraud_rate_pct
+device_changed,0,2978821,1907.0,0.064
+device_changed,1,4504945,1492812.0,33.1372
+new_device,0,5979289,211.0,0.0035
+new_device,1,1504477,1494508.0,99.3374
+new_ip,0,1,0.0,0.0
+new_ip,1,7483765,1494719.0,19.9728
+new_merchant,0,6972619,1384743.0,19.8597
+new_merchant,1,511147,109976.0,21.5155

@@ -1,0 +1,2 @@
+model,threshold,test_rows,roc_auc,pr_auc,precision,recall,f1,true_positives,false_positives,false_negatives,true_negatives,review_rate
+lightgbm_final_test,0.75,1206491,0.9968951933629916,0.9907489142690777,0.969885380157247,0.9336057793932964,0.9513998441449831,225252,6994,16019,958226,0.19249708452031553

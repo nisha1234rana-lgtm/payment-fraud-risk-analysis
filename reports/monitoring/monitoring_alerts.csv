@@ -1,0 +1,6 @@
+transaction_date,alert_type,item,severity,value,message
+2024-10-26,Numeric Feature Drift,customer_prior_transactions,High,0.46633227049843196,Numeric feature distribution shifted from reference population.
+2024-10-27,Numeric Feature Drift,customer_prior_transactions,High,0.9877515442845033,Numeric feature distribution shifted from reference population.
+2024-10-28,Numeric Feature Drift,customer_prior_transactions,High,1.783192192456668,Numeric feature distribution shifted from reference population.
+2024-10-29,Numeric Feature Drift,customer_prior_transactions,High,2.076322945321662,Numeric feature distribution shifted from reference population.
+2024-10-30,Numeric Feature Drift,customer_prior_transactions,High,3.180947097670868,Numeric feature distribution shifted from reference population.

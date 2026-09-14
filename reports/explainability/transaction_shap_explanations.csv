@@ -1,0 +1,101 @@
+transaction_key,case_type,actual_fraud,fraud_probability,driver_rank,feature,friendly_name,feature_value,shap_contribution_log_odds,direction
+TX_3a4e5f29,high_risk_true_positive,1,0.9999999655376423,1,amount,Transaction amount,10.2,5.868061671579978,Higher fraud risk
+TX_3a4e5f29,high_risk_true_positive,1,0.9999999655376423,2,card_present,Card present,1,5.22693330550983,Higher fraud risk
+TX_3a4e5f29,high_risk_true_positive,1,0.9999999655376423,3,log_amount,Transaction amount scale,2.4159137783010487,1.8272130333303052,Higher fraud risk
+TX_3a4e5f29,high_risk_true_positive,1,0.9999999655376423,4,currency,Currency,MXN,1.7048932213318668,Higher fraud risk
+TX_3a4e5f29,high_risk_true_positive,1,0.9999999655376423,5,channel,Payment channel,pos,1.4720439435122827,Higher fraud risk
+TX_899fd294,high_risk_true_positive,1,0.9999999633615562,1,amount,Transaction amount,12.44,5.944404378608909,Higher fraud risk
+TX_899fd294,high_risk_true_positive,1,0.9999999633615562,2,card_present,Card present,1,5.26119247843298,Higher fraud risk
+TX_899fd294,high_risk_true_positive,1,0.9999999633615562,3,log_amount,Transaction amount scale,2.5982353350950036,1.8643928682273456,Higher fraud risk
+TX_899fd294,high_risk_true_positive,1,0.9999999633615562,4,channel,Payment channel,pos,1.5117945659366412,Higher fraud risk
+TX_899fd294,high_risk_true_positive,1,0.9999999633615562,5,distance_from_home,Distance from home,1.0,1.3087110026307436,Higher fraud risk
+TX_165d3ac1,high_risk_true_positive,1,0.9999999608352586,1,amount,Transaction amount,4.51,6.08812682194094,Higher fraud risk
+TX_165d3ac1,high_risk_true_positive,1,0.9999999608352586,2,card_present,Card present,1,5.2394729101293045,Higher fraud risk
+TX_165d3ac1,high_risk_true_positive,1,0.9999999608352586,3,log_amount,Transaction amount scale,1.706564623164823,1.844488515975877,Higher fraud risk
+TX_165d3ac1,high_risk_true_positive,1,0.9999999608352586,4,currency,Currency,MXN,1.7239418462226,Higher fraud risk
+TX_165d3ac1,high_risk_true_positive,1,0.9999999608352586,5,channel,Payment channel,pos,1.4829683604754549,Higher fraud risk
+TX_fbfb4791,high_risk_true_positive,1,0.9999999598267667,1,amount,Transaction amount,13.3,6.171711349217444,Higher fraud risk
+TX_fbfb4791,high_risk_true_positive,1,0.9999999598267667,2,card_present,Card present,1,5.453579613424407,Higher fraud risk
+TX_fbfb4791,high_risk_true_positive,1,0.9999999598267667,3,log_amount,Transaction amount scale,2.6602595372658615,1.8945314918935778,Higher fraud risk
+TX_fbfb4791,high_risk_true_positive,1,0.9999999598267667,4,channel,Payment channel,pos,1.5274767401257952,Higher fraud risk
+TX_fbfb4791,high_risk_true_positive,1,0.9999999598267667,5,distance_from_home,Distance from home,1.0,1.287507838281479,Higher fraud risk
+TX_f2e7f6cb,high_risk_true_positive,1,0.9999999594137486,1,amount,Transaction amount,8.89,6.122932483076137,Higher fraud risk
+TX_f2e7f6cb,high_risk_true_positive,1,0.9999999594137486,2,card_present,Card present,1,5.234657127049626,Higher fraud risk
+TX_f2e7f6cb,high_risk_true_positive,1,0.9999999594137486,3,log_amount,Transaction amount scale,2.2915241456346207,1.8504102764056034,Higher fraud risk
+TX_f2e7f6cb,high_risk_true_positive,1,0.9999999594137486,4,currency,Currency,MXN,1.7150549854487784,Higher fraud risk
+TX_f2e7f6cb,high_risk_true_positive,1,0.9999999594137486,5,channel,Payment channel,pos,1.4780888624783408,Higher fraud risk
+TX_725a0850,false_positive,0,0.9916701687660335,1,amount,Transaction amount,205181.6,2.130973834772758,Higher fraud risk
+TX_725a0850,false_positive,0,0.9916701687660335,2,distance_from_home,Distance from home,1.0,1.992264489169555,Higher fraud risk
+TX_725a0850,false_positive,0,0.9916701687660335,3,transaction_hour,Transaction hour,4,1.308013721405912,Higher fraud risk
+TX_725a0850,false_positive,0,0.9916701687660335,4,amount_vs_customer_average,Amount vs customer average,7.54397186518939,1.0275375796341535,Higher fraud risk
+TX_725a0850,false_positive,0,0.9916701687660335,5,card_type,Card type,Basic Debit,0.6970157986278077,Higher fraud risk
+TX_e0b4ab49,false_positive,0,0.9899199629683305,1,amount,Transaction amount,1153718.19,4.303252145597951,Higher fraud risk
+TX_e0b4ab49,false_positive,0,0.9899199629683305,2,distance_from_home,Distance from home,1.0,2.34082364780456,Higher fraud risk
+TX_e0b4ab49,false_positive,0,0.9899199629683305,3,amount_vs_customer_average,Amount vs customer average,62.78062548458202,2.267233409318827,Higher fraud risk
+TX_e0b4ab49,false_positive,0,0.9899199629683305,4,merchant,Merchant,Airbnb,-2.029815072843818,Lower fraud risk
+TX_e0b4ab49,false_positive,0,0.9899199629683305,5,merchant_type,Merchant type,booking,-1.2862070177923144,Lower fraud risk
+TX_997d5b33,false_positive,0,0.9889245542615629,1,amount,Transaction amount,916694.46,2.653441074068992,Higher fraud risk
+TX_997d5b33,false_positive,0,0.9889245542615629,2,distance_from_home,Distance from home,1.0,2.1606320001262427,Higher fraud risk
+TX_997d5b33,false_positive,0,0.9889245542615629,3,card_type,Card type,Platinum Credit,-1.2286584971462136,Lower fraud risk
+TX_997d5b33,false_positive,0,0.9889245542615629,4,amount_vs_customer_average,Amount vs customer average,22.866019690955767,1.2137589617019997,Higher fraud risk
+TX_997d5b33,false_positive,0,0.9889245542615629,5,transaction_hour,Transaction hour,4,1.165397209053929,Higher fraud risk
+TX_c7a06d65,false_positive,0,0.9884778885214544,1,amount,Transaction amount,875345.34,2.587114716857489,Higher fraud risk
+TX_c7a06d65,false_positive,0,0.9884778885214544,2,distance_from_home,Distance from home,1.0,2.0855821297820913,Higher fraud risk
+TX_c7a06d65,false_positive,0,0.9884778885214544,3,card_type,Card type,Platinum Credit,-1.3106250243668074,Lower fraud risk
+TX_c7a06d65,false_positive,0,0.9884778885214544,4,transaction_hour,Transaction hour,3,1.256083248753749,Higher fraud risk
+TX_c7a06d65,false_positive,0,0.9884778885214544,5,amount_vs_customer_average,Amount vs customer average,20.93564749008369,1.2028861632571355,Higher fraud risk
+TX_68efd105,false_positive,0,0.9875475645844759,1,distance_from_home,Distance from home,1.0,2.5286353894614524,Higher fraud risk
+TX_68efd105,false_positive,0,0.9875475645844759,2,merchant,Merchant,HBO Max,1.7523509057348512,Higher fraud risk
+TX_68efd105,false_positive,0,0.9875475645844759,3,transaction_hour,Transaction hour,1,1.2978482854260194,Higher fraud risk
+TX_68efd105,false_positive,0,0.9875475645844759,4,merchant_type,Merchant type,streaming,0.7018297911382542,Higher fraud risk
+TX_68efd105,false_positive,0,0.9875475645844759,5,card_present,Card present,0,-0.6617764059738659,Lower fraud risk
+TX_d6fd6838,false_negative,1,0.7499898091354973,1,distance_from_home,Distance from home,1.0,2.6313096740815665,Higher fraud risk
+TX_d6fd6838,false_negative,1,0.7499898091354973,2,transaction_hour,Transaction hour,2,1.167701644661887,Higher fraud risk
+TX_d6fd6838,false_negative,1,0.7499898091354973,3,card_type,Card type,Platinum Credit,-0.9658193723100037,Lower fraud risk
+TX_d6fd6838,false_negative,1,0.7499898091354973,4,amount,Transaction amount,213866.34,0.7475080710865143,Higher fraud risk
+TX_d6fd6838,false_negative,1,0.7499898091354973,5,card_present,Card present,0,-0.7440492667594856,Lower fraud risk
+TX_cf8c1745,false_negative,1,0.7499845793149846,1,distance_from_home,Distance from home,1.0,2.3519698953081547,Higher fraud risk
+TX_cf8c1745,false_negative,1,0.7499845793149846,2,transaction_hour,Transaction hour,3,1.2871284018326643,Higher fraud risk
+TX_cf8c1745,false_negative,1,0.7499845793149846,3,merchant,Merchant,Safeway,0.8222272743031295,Higher fraud risk
+TX_cf8c1745,false_negative,1,0.7499845793149846,4,card_present,Card present,0,-0.7658354668403513,Lower fraud risk
+TX_cf8c1745,false_negative,1,0.7499845793149846,5,currency,Currency,JPY,-0.4284805463026857,Lower fraud risk
+TX_7b0a50b4,false_negative,1,0.7499351226569513,1,distance_from_home,Distance from home,1.0,1.9430498006945292,Higher fraud risk
+TX_7b0a50b4,false_negative,1,0.7499351226569513,2,merchant,Merchant,Chili's,1.4693834384748679,Higher fraud risk
+TX_7b0a50b4,false_negative,1,0.7499351226569513,3,card_present,Card present,0,-0.7883001126525876,Lower fraud risk
+TX_7b0a50b4,false_negative,1,0.7499351226569513,4,amount_vs_customer_average,Amount vs customer average,5.122739493680845,0.6196960530793355,Higher fraud risk
+TX_7b0a50b4,false_negative,1,0.7499351226569513,5,merchant_type,Merchant type,casual,0.5798413854651653,Higher fraud risk
+TX_b7ad106a,false_negative,1,0.7499249113741702,1,distance_from_home,Distance from home,1.0,2.711007851730955,Higher fraud risk
+TX_b7ad106a,false_negative,1,0.7499249113741702,2,currency,Currency,RUB,1.5559300948825474,Higher fraud risk
+TX_b7ad106a,false_negative,1,0.7499249113741702,3,amount,Transaction amount,136167.41,1.2276657313727803,Higher fraud risk
+TX_b7ad106a,false_negative,1,0.7499249113741702,4,card_type,Card type,Platinum Credit,-1.0776345902548001,Lower fraud risk
+TX_b7ad106a,false_negative,1,0.7499249113741702,5,card_present,Card present,0,-0.8223469251968866,Lower fraud risk
+TX_7a03a8c4,false_negative,1,0.7498911296351868,1,distance_from_home,Distance from home,1.0,2.7493428112400022,Higher fraud risk
+TX_7a03a8c4,false_negative,1,0.7498911296351868,2,merchant,Merchant,Spotify,1.3537681914838668,Higher fraud risk
+TX_7a03a8c4,false_negative,1,0.7498911296351868,3,card_present,Card present,0,-0.7907011997471322,Lower fraud risk
+TX_7a03a8c4,false_negative,1,0.7498911296351868,4,merchant_type,Merchant type,streaming,0.5344008322174649,Higher fraud risk
+TX_7a03a8c4,false_negative,1,0.7498911296351868,5,currency,Currency,MXN,0.4801485840012915,Higher fraud risk
+TX_30da8954,low_risk_true_negative,0,1.0709588639444586e-05,1,amount,Transaction amount,208.04,-2.453614014926839,Lower fraud risk
+TX_30da8954,low_risk_true_negative,0,1.0709588639444586e-05,2,merchant,Merchant,Etsy,-1.4733061977482802,Lower fraud risk
+TX_30da8954,low_risk_true_negative,0,1.0709588639444586e-05,3,distance_from_home,Distance from home,0.0,-1.1196749732343352,Lower fraud risk
+TX_30da8954,low_risk_true_negative,0,1.0709588639444586e-05,4,card_present,Card present,0,-0.7254512844593229,Lower fraud risk
+TX_30da8954,low_risk_true_negative,0,1.0709588639444586e-05,5,currency,Currency,USD,-0.6957918030340877,Lower fraud risk
+TX_438a3b1e,low_risk_true_negative,0,1.0967514959901729e-05,1,amount,Transaction amount,135.39,-2.7580642936956394,Lower fraud risk
+TX_438a3b1e,low_risk_true_negative,0,1.0967514959901729e-05,2,distance_from_home,Distance from home,0.0,-1.103828118624703,Lower fraud risk
+TX_438a3b1e,low_risk_true_negative,0,1.0967514959901729e-05,3,log_amount,Transaction amount scale,4.915518428938784,-0.8329129506008279,Lower fraud risk
+TX_438a3b1e,low_risk_true_negative,0,1.0967514959901729e-05,4,merchant,Merchant,CVS Pharmacy,-0.8193510884468785,Lower fraud risk
+TX_438a3b1e,low_risk_true_negative,0,1.0967514959901729e-05,5,card_present,Card present,0,-0.7341941355458461,Lower fraud risk
+TX_c9adb185,low_risk_true_negative,0,1.1288998206651964e-05,1,amount,Transaction amount,201.11,-2.37049706924662,Lower fraud risk
+TX_c9adb185,low_risk_true_negative,0,1.1288998206651964e-05,2,merchant,Merchant,Etsy,-1.494805515797427,Lower fraud risk
+TX_c9adb185,low_risk_true_negative,0,1.1288998206651964e-05,3,distance_from_home,Distance from home,0.0,-1.099612314832392,Lower fraud risk
+TX_c9adb185,low_risk_true_negative,0,1.1288998206651964e-05,4,card_present,Card present,0,-0.7242920385438041,Lower fraud risk
+TX_c9adb185,low_risk_true_negative,0,1.1288998206651964e-05,5,currency,Currency,USD,-0.6770008786493805,Lower fraud risk
+TX_aa51ed13,low_risk_true_negative,0,1.1466449624456958e-05,1,amount,Transaction amount,252.13,-2.836261599102099,Lower fraud risk
+TX_aa51ed13,low_risk_true_negative,0,1.1466449624456958e-05,2,distance_from_home,Distance from home,0.0,-1.1224309918599333,Lower fraud risk
+TX_aa51ed13,low_risk_true_negative,0,1.1466449624456958e-05,3,merchant,Merchant,CVS Pharmacy,-0.9212691629339651,Lower fraud risk
+TX_aa51ed13,low_risk_true_negative,0,1.1466449624456958e-05,4,card_present,Card present,0,-0.7411291519405435,Lower fraud risk
+TX_aa51ed13,low_risk_true_negative,0,1.1466449624456958e-05,5,log_amount,Transaction amount scale,5.533903190752134,-0.6740886288275187,Lower fraud risk
+TX_facc6965,low_risk_true_negative,0,1.1512845531397474e-05,1,amount,Transaction amount,119.03,-2.429972926163427,Lower fraud risk
+TX_facc6965,low_risk_true_negative,0,1.1512845531397474e-05,2,currency,Currency,CAD,-1.1641175127102528,Lower fraud risk
+TX_facc6965,low_risk_true_negative,0,1.1512845531397474e-05,3,distance_from_home,Distance from home,0.0,-1.0792500338212752,Lower fraud risk
+TX_facc6965,low_risk_true_negative,0,1.1512845531397474e-05,4,merchant,Merchant,Local Gas Station,-0.755404405684999,Lower fraud risk
+TX_facc6965,low_risk_true_negative,0,1.1512845531397474e-05,5,card_present,Card present,0,-0.7399746601590117,Lower fraud risk
